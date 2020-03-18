@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-sm-2 col-sm-8">
+      <div class="jumbotron" style="margin-top:50px; background:#53735b;">
+        <div class="card text-blank border-0">
+          <div class="card-body">
+            <div class="card-title text-center">
+              <h5>Sign Up</h5>
+            </div>
+            <div class="card-text">
+              <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+                <div class="form-row">
+                  <div class="form-group col-sm-6">
+                    <input type="text" class="form-control" placeholder="First Name" [formControl]="myForm.controls['firstName']">
+                  </div>
+
+                  <div class="form-group col-sm-6">
+                    <input type="text" class="form-control" placeholder="Last Name" [formControl]="myForm.controls['lastName']">
+                  </div>
+                </div>
+
+                <div class="alert alert-danger" *ngIf="(!myForm.controls['firstName'].valid || !myForm.controls['lastName'].valid) && (myForm.controls['firstName'].touched || myForm.controls['lastName'].touched)">
+                  First and Last name are required.
+                </div>
+
+                <div class="form-group">
+                  <input type="email" placeholder="Enter Your Email" class="form-control" [formControl]="myForm.controls['email']">
+                  <small class="form-text text-muted">Your Email Will Not Be Shared With Anyone.</small>
+                </div>
+
+                <div class="alert alert-danger" *ngIf="!myForm.controls['email'].valid && myForm.controls['email'].touched">
+                  Email required.
+                </div>
+
+                <div class="form-group">
+                  <input type="password" placeholder="Password" class="form-control" [formControl]="myForm.controls['password']">
+                </div>
+                <div class="form-group">
+                  <input type="password" placeholder="Confirm Password" class="form-control" [formControl]="myForm.controls['confirmPassword']">
+                </div>
+
+                <div class="alert alert-danger" *ngIf="(!myForm.controls['password'].valid || !myForm.controls['confirmPassword'].valid) && (myForm.controls['password'].touched || myForm.controls['confirmPassword'].touched)">
+                  Password should be atleast 8 characters long.
+                </div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-block btn-warning" [disabled]="!myForm.valid">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-success" *ngIf="message.length>0" style="margin-top:50px">
+        {{message}}
+      </div>
+      <div class="alert alert-danger" *ngIf="userError" style="margin-top:50px">
+        {{userError.message}}
+      </div>
+    </div>
+  </div>
+</div>

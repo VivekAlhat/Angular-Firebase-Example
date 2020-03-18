@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="offset-sm-3 col-sm-6">
+    <div class="jumbotron" style="margin-top:50px; background:#53735b;">
+      <div class="card text-blank border-0">
+        <div class="card-body">
+          <div class="card-title text-center">
+            <h5>Log In</h5>
+          </div>
+          <div class="card-text">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Enter Email" [formControl]="myForm.controls['email']">
+              </div>
+
+              <div class="alert alert-danger" *ngIf="!myForm.controls['email'].valid && myForm.controls['email'].touched">
+                Please, enter a valid email.
+              </div>
+
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Enter Password" [formControl]="myForm.controls['password']">
+              </div>
+
+              <div class="alert alert-danger" *ngIf="!myForm.controls['password'].valid && myForm.controls['password'].touched">
+                Password is required.
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-block btn-warning round" [disabled]="!myForm.valid">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-success" style="margin-top:50px" *ngIf="message.length>0">
+      You have been logged in successfully.
+    </div>
+    <div class="alert alert-danger" style="margin-top:50px" *ngIf="userError">
+      {{userError.message}}
+    </div>
+  </div>
+</div>
