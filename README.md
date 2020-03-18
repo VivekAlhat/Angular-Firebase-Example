@@ -1,3 +1,5 @@
+`Create a new Firebase project and replace the firebase config object in app.module.ts with your configuration object`
+
 # SignupForm
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
